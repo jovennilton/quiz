@@ -1,0 +1,31 @@
+version: "3"
+services:
+  react-app:
+    image: react-app-nova2
+    stdin_open: true
+    ports: 
+      - "3000:3000"
+    networks:
+      - quiz-app
+  api-server:
+    image: api-server-nova
+    ports:
+      - "5000:5000"
+    networks:
+      - quiz-app
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - quiz-app
+    volumes:
+      - mongo-data:/data/db
+networks:
+  quiz-app:
+    driver: bridge
+volumes:
+  mongo-data:
+    driver: local
