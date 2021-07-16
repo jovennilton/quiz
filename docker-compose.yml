@@ -1,14 +1,14 @@
 version: "3"
 services:
   react-app:
-    image: react-app-nova2
+    image: app-quiz
     stdin_open: true
     ports: 
       - "3000:3000"
     networks:
       - quiz-app
   api-server:
-    image: api-server-nova
+    image: api-quiz
     ports:
       - "5000:5000"
     networks:
